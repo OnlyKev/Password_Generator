@@ -128,7 +128,7 @@ void passwordGen(int num, int charup, int charlow)
                 }
             }
     }
-    printf("%c", passArr);
+    printf("%s", passArr);
 
     return;
 
