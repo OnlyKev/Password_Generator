@@ -1,13 +1,2 @@
 # ninja log v5
-264	317	1671689153339006099	personal_projects	ac9d2ee901aff839
-1	264	1671689153283726850	CMakeFiles/personal_projects.dir/main.c.o	d09e5388cc76f81c
-1	261	1671689691981857324	CMakeFiles/personal_projects.dir/main.c.o	d09e5388cc76f81c
-261	312	1671689692035663135	personal_projects	ac9d2ee901aff839
-1	274	1671689741108209240	CMakeFiles/personal_projects.dir/main.c.o	d09e5388cc76f81c
-274	342	1671689741179103538	personal_projects	ac9d2ee901aff839
-1	253	1671689787240504302	CMakeFiles/personal_projects.dir/main.c.o	d09e5388cc76f81c
-254	302	1671689787291224576	personal_projects	ac9d2ee901aff839
-2	251	1671689847375774566	CMakeFiles/personal_projects.dir/main.c.o	d09e5388cc76f81c
-251	300	1671689847427435218	personal_projects	ac9d2ee901aff839
-0	245	1671689873945470456	CMakeFiles/personal_projects.dir/main.c.o	d09e5388cc76f81c
 245	297	1671689873999008195	personal_projects	ac9d2ee901aff839
