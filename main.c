@@ -1,17 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 void clear_keyboard_buffer(void);
 
 // Precondition: the user has entered something from keyboard buffer
-// Postcondition: determines
-char choice(char a);
+// Postcondition: determines if user indicated to continue with the program or exit the program
+void choice(char a);
 // Precondition: none
 // Postcondition: verifies that user has entered valid inputs and displays results to user
 void inputVerify(void);
-//precondition:
+//precondition: the user has indicated to continue with the program in choice and has entered valid inputs in inputVerify
+// postcondition: Generate a random password using the specific numbers, uppercase letters, and lowercase letters that user has
+// indicated and generates the total length of password by combining numbers, uppercase letters, and lowercase letters.
+// Prints out the password and its respective length
 void passwordGen(int num, int charup, int charlow);
-
 
 int main(int argc, char* argv[])
 {
@@ -26,7 +29,7 @@ int main(int argc, char* argv[])
     return 0;
 }
 
-char choice(char userStart)
+void choice(char userStart)
 {
    // char userStart;
 
@@ -36,8 +39,9 @@ char choice(char userStart)
         case 'Y':
             inputVerify();
             break;
-        case 'N':
         case 'n':
+        case 'N':
+            exit(0);
             break;
         default:
             while (userStart != 'Y' || userStart != 'y' && userStart != 'N' || userStart != 'n' )
@@ -49,7 +53,6 @@ char choice(char userStart)
             }
             break;
     }
-    return userStart;
 }
 
 void inputVerify(void)
@@ -63,7 +66,7 @@ void inputVerify(void)
     printf("ENTER A POSITIVE NUMBER FOR NUMBERS IN PASSWORD \n");
     noc = scanf("%d", &forNum);
     clear_keyboard_buffer();
-    while (noc != 1 || forNum <= 0)
+    while (noc != 1 || forNum < 0)
     {
         printf("Please enter a valid input. ex. 0 1 2 3 ... \n");
         noc = scanf("%d", &forNum);
@@ -89,33 +92,72 @@ void inputVerify(void)
         noc = scanf("%d", &forCharLow);
         clear_keyboard_buffer();
     }
-    printf("%d||%d||%d\n", forNum,forCharUp, forCharLow);
+    printf("%d numbers of numbers ||%d numbers of uppercase letters ||%d numbers of lowercase letters\n", forNum,forCharUp, forCharLow);
     passwordGen(forNum, forCharUp, forCharLow);
-    return;
 }
 
 void passwordGen(int num, int charup, int charlow)
 {
-    int i,j,k;
+    // the amount that the user choose for length
+    int i = 0; // length of numbers
+    int j = 0; // length of uppercase letters
+    int k = 0; // length of lowercase letters
+
+    // the index in the passArr where values will be added
+    int s = 0; // numbers
+    int y = 1; // uppercase letters
+    int z = 2; // lowercase letters
+
     int numCombine = num + charup + charlow;
-    int numbers[10] = {0,1,2,3,4,5,6,7,8,9};
+    int totalPassLength = numCombine;
+    int numbers[10] = {48,49,50,51,52,53,54,55,56,57,}; // uses ASCII representation of numbers
     char charactersUpper[26] = {"ABCDEFGHIJKLMNOPQRSTUVWXYZ"};
     char charactersLower[26] = {"abcdefghijklmnopqrstuvwxyz"};
-    char *passArr;
+    char passArr[numCombine];
 
-    passArr =(char*)malloc(sizeof(char) *numCombine + 1);
 
-    if (passArr == NULL)
+
+
+    srand(time(NULL));
+
+    while (numCombine != 0)
     {
-        printf("Failure to allocate memory");
-        exit(1);
+
+        int n = (rand() %  (9 - 0 + 1))+ 0;
+        int l = (rand() %  (25 - 0 + 1)) + 0;
+        int m = (rand() %  (25 - 0 + 1)) + 0;
+        if (i < num)
+        {
+            passArr[s] = numbers[n];
+            numCombine -= 1;
+            i++;
+            s+=3;
+        }
+        if (j < charup)
+        {
+            passArr[y] = charactersUpper[l];
+            numCombine -= 1;
+            j++;
+            y+=3;
+        }
+        if (k < charlow)
+        {
+            passArr[z] = charactersLower[m];
+            numCombine -= 1;
+            k++;
+            z+=3;
+        }
     }
+    printf("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("Copy Password : %s\n", passArr);
+    printf("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("the password total length is %d\n", totalPassLength);
 
-    int n = rand()%10;
-    int l = rand()%26;
-    int m = rand()%26;
 
-    while (numCombine)
+
+
+
+    /*
     for (i = 0; i <= num; i++)
     {
             passArr[i] = numbers[n];
@@ -125,14 +167,11 @@ void passwordGen(int num, int charup, int charlow)
                 for (k = 0; k <= charlow; k++)
                 {
                     passArr[k + 2] = charactersLower[m];
+                    break;
                 }
             }
     }
-    printf("%s", passArr);
-
-    return;
-
-
+     */
 
 }
 void clear_keyboard_buffer(void)
