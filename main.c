@@ -7,7 +7,7 @@ void clear_keyboard_buffer(void);
 // Precondition: the user has entered something from keyboard buffer
 // Postcondition: determines if user indicated to continue with the program or exit the program
 void choice(char a);
-// Precondition: none
+// Precondition: the user has indicated that they want to continue with the program
 // Postcondition: verifies that user has entered valid inputs and displays results to user
 void inputVerify(void);
 //precondition: the user has indicated to continue with the program in choice and has entered valid inputs in inputVerify
@@ -108,12 +108,12 @@ void passwordGen(int num, int charup, int charlow)
     int y = 1; // uppercase letters
     int z = 2; // lowercase letters
 
-    int numCombine = num + charup + charlow;
-    int totalPassLength = numCombine;
+    int numCombine = num + charup + charlow; // combines all values and used to generate password length
+    int totalPassLength = numCombine; // used in displaying total length of password to user
     int numbers[10] = {48,49,50,51,52,53,54,55,56,57,}; // uses ASCII representation of numbers
     char charactersUpper[26] = {"ABCDEFGHIJKLMNOPQRSTUVWXYZ"};
     char charactersLower[26] = {"abcdefghijklmnopqrstuvwxyz"};
-    char passArr[numCombine];
+    char passArr[numCombine]; // password holding array
 
 
 
