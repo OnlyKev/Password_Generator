@@ -12,8 +12,10 @@ WHAT IS THE PURPOSE OF THIS PROGRAM
 // requirements for password
 
 CURRENT FUNCTION
+// allows user to generate passwords comprised of numbers, uppercase letters, lowercase letters, and special characters
+// user can choose how many numbers, uppercase letters, lowercase letters, and special characters
 
-DATE ADDED:
+DATE ADDED: 1/11/23
 
 FUTURE IMPROVEMENTS
 
