@@ -19,6 +19,7 @@ void passwordGen(int num, int charup, int charlow, int forSpecialChar);
 int main(int argc, char* argv[])
 {
     char userStart; // BEGINS PROGRAM
+    srand(time(NULL));
 
     printf("RECOMMENDATION!!!\n");
     printf("FOR A STRONG PASSWORD, PLEASE USE AT LEAST 4 OF EACH OPTION\n");
@@ -125,18 +126,18 @@ void passwordGen(int num, int charup, int charlow, int SpecialChar)
     int y = 2; // lowercase letters
     int z = 3; // special characters
 
+
     int numCombine = num + charup + charlow + SpecialChar; // combines all values and used to generate password length
     int totalPassLength = numCombine; // used in displaying total length of password to user
-    int numbers[10] = {48,49,50,51,52,53,54,55,56,57,}; // uses ASCII representation of numbers
+    char numbers[11] = {'1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '\0'};
     char charactersUpper[26] = {"ABCDEFGHIJKLMNOPQRSTUVWXYZ"};
     char charactersLower[26] = {"abcdefghijklmnopqrstuvwxyz"};
     int specialChar[8] = {33, 64, 35, 36,37,94,38,42}; // uses ASCII representation of special charaters
-    char passArr[numCombine]; // password holding array
+    char passArr[numCombine + 1] ; // password holding array
 
 
 
 
-    srand(time(NULL));
 
     while (numCombine != 0)
     {
@@ -172,14 +173,17 @@ void passwordGen(int num, int charup, int charlow, int SpecialChar)
             passArr[z] = specialChar[u];
             numCombine -= 1;
             o++;
-            z+=4;
+            z += 4;
         }
     }
+    passArr[totalPassLength] = + '\0'; // adds a null terminator in array
+
     printf("\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
     printf("Copy Password : %s\n", passArr);
     printf("The password total length is %d\n", totalPassLength);
-    printf("\nDISCLAIMER!!! IF A PASSWORD GENERATED HAS A SPACE FOLLOWED BY A FEW RANDOM CHARACTERS AFTER DISREGARD THE RANDOM CHARACTERS AND THE VERY LAST CHARACTER IN THE FULL PASSWORD\n");
-   // printf("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+   // printf("\nDISCLAIMER!!! IF A PASSWORD GENERATED HAS A SPACE FOLLOWED BY A FEW RANDOM CHARACTERS AFTER DISREGARD THE RANDOM CHARACTERS AND THE VERY LAST CHARACTER IN THE FULL PASSWORD\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
 
 
 
